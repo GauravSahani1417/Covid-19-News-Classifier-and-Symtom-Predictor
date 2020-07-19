@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Covid-19 WebApp</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='spam-favicon.ico') }}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/css/mdb.min.css" rel="stylesheet">
+    <style>
+        body,
+        html {
+            height: 100%;
+        }
+
+        .bg {
+            /* The image used */
+            background-image: url("static/999.JPG");
+
+            /* Full height */
+            height: 100%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: repeat-y;
+            background-size: cover;
+
+        }
+    </style>
+</head>
+
+<body class="bg">
+
+    <!-- Website Title -->
+    <div class="navbar navbar-light blue-gradient text-white justify-content-center">
+        <div class="card-body p-0 mt-1 mb-1 text-center">
+            <h2><strong>Covid-19 Fake News Detector</strong></h2>
+            <p>This is AI based Web-Application designed to keep us away from the Fake Covid-19 News circulating on internet!</p>
+        </div>
+    </div>
+
+
+
+    <!-- Text Area -->
+    <div class="d-flex justify-content-center text-center mt-5">
+        <form action="{{ url_for('predict') }}" method="POST">
+            <div class="form-group shadow-textarea">
+                <textarea class='form-control shadow-textarea' name="message" rows="12" cols="65"
+                    placeholder="Enter Your Message Here.....!"></textarea><br />
+            </div>
+            <input type="submit" class="btn blue-gradient btn-rounded" value="Predict">
+        </form>
+    </div>
+
+    <!-- Result -->
+    <div class="d-flex justify-content-center mt-5 mb-5">
+        {% if prediction==1 %}
+        <h3><span class='alert alert-danger'>This is a Fake message.</span></h3>
+        {% elif prediction==0 %}
+        <h3><span class='alert alert-success'>This is NOT a Fake message.</span></h3>
+        {% endif %}
+    </div>
+    
+    <body>
+    <div class="navbar navbar-light blue-gradient text-white justify-content-center">
+        <div class="card-body p-0 mt-1 mb-1 text-center">
+            <h2><strong>Let's Also find the Probablity of Person having Covid-19</strong></h2>
+            <p>Fill the Questioniare below, to quantify the risk of having Covid-19</p>
+        </div>
+    </div>
+    </br>
+    <h2><div style="text-align:center"><strong>Please Enter the details below:</strong></div></h2>
+    </br>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-6'>
+          <form method="POST" action="/prediction">
+          <style>
+              h4 {
+                 border: 2px solid black;
+                 padding: 10px;
+                 border-top-right-radius: 25px;
+                 }
+          </style>   
+            <div class="form-group">
+              <h3><label for="Age"><p class="font-weight-bold">Age :</p></label></h3>
+              <input type="text" name="age">
+              <br>
+              <h4> Please Enter your Age </h4>
+              </br>
+              </div>
+
+              <div class="form-group">
+                <h3><label for="Gender"><p class="font-weight-bold">Gender :</p></label></h3>
+                <input type="text" name="gender">
+                <br>
+                <h4> Please enter 0 : Male or 1 : Female </h4>
+                </br>
+                </div>
+
+                <div class="form-group">
+                  <h3><label for="Body_Temperature"><p class="font-weight-bold">Body_Temperature :</p></label></h3>
+                  <input type="text" name="bodytemperature">
+                  <br>
+                  <h4> Please Enter your body temperature in Degree Fahrenheit </h4>
+                  </br>
+                  </div>
+
+                  <div class="form-group">
+                    <h3><label for="DryCough"><p class="font-weight-bold">DryCough :</p></label></h3>
+                    <input type="text" name="DryCough">
+                    <br>
+                    <h4> Please enter 0 : No Dry Cough or 1 : If you have Dry Cough </h4>
+                    </br>
+                    </div>
+            
+                    <div class="form-group">
+                      <h3><label for="Sour_Throat"><p class="font-weight-bold">Sour_Throat :</p></label></h3>
+                      <input type="text" name="sourthroat">
+                      <br>
+                      <h4> Please enter 0 : Not having Sour throat or 1 : Having Sour throat </h4>
+                      </br>
+                      </div>
+
+                      <div class="form-group">
+                        <h3><label for="Weakness"><p class="font-weight-bold">Weakness :</p></label></h3>
+                        <input type="text" name="weakness">
+                        <br>
+                        <h4> Please enter 0 : No Weakness or 1 : Having Weakness </h4>
+                        </br>
+                        </div>
+                        
+                        <div class="form-group">
+                          <h3><label for="Breathing_Problem"><p class="font-weight-bold">Breathing_Problem :</p></label></h3>
+                          <input type="text" name="breathingproblem">
+                          <br>
+                          <h4> Please enter 0 : No Breathing problems or 1 : Having Breathing problems </h4>
+                          </br>
+                          </div>
+
+                          <div class="form-group">
+                            <h3><label for="Diabetes"><p class="font-weight-bold">Diabetes :</p></label></h3>
+                            <input type="text" name="diabetes">
+                            <br>
+                            <h4> Please enter 0 : Not Having Diabetes or 1 : Having Diabetes </h4>
+                            </br>
+                            </div>
+
+                            <div class="form-group">
+                              <h3><label for="Drowsiness"><p class="font-weight-bold">Drowsiness :</p></label></h3>
+                              <input type="text" name="drowsiness">
+                              <br>
+                              <h4> Please enter 0 : Not feeling Drowsy or 1 : Feeling Drowsy </h4>
+                              </br>
+                              </div>
+
+                              <div class="form-group">
+                                <h3><label for="Travel_History"><p class="font-weight-bold">Travel_History :</p></label></h3>
+                                <input type="text" name="travelhistory">
+                                <br>
+                                <h4> Please enter 0 : Not having Travel history or 1 : Having Travel History </h4>
+                                </br>
+                                </div>
+
+                       <h2><input class='btn btn-primary' type='submit' value='Submit'><h2>
+            </form>
+
+          </div>
+          </div>
+          </div>
+          <div style="background-color:#ffffff; padding:5px">
+          <h3><p style="color:black;text-align:center;" ><strong>Stay Home! and Stay Safe!</strong></p></h3>
+          </div>
+  </body>
+
+    <!-- Footer -->
+    <footer class="page-footer font-small blue-gradient">
+
+        <!-- Copyright -->
+        <div class='footer-copyright text-center py-3'>
+            <div class="card-body">
+                <!--Linkedin-->
+                <a class="btn-floating btn-lg btn-li" type="button" role="button"
+                    href="https://www.linkedin.com/in/gaurav-sahani-6177a7179/" target="_blank"><i
+                        class="fab fa-linkedin-in"></i></a>
+                <!--Github-->
+                <a class="btn-floating btn-lg btn-git" type="button" role="button"
+                    href="https://github.com/GauravSahani1417" target="_blank"><i
+                        class="fab fa-github"></i></a>
+            </div>
+            <h3><p class='footer-description'>Design & Developed By : Gaurav Rajesh Sahani</p></h3>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+
+</body>
+
+</html>
