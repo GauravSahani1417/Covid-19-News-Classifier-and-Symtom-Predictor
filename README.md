@@ -9,4 +9,8 @@
 ## Live Web-Application Link:
  https://covid19newsclassifier.herokuapp.com/
  
+## Implementation of the project :
+
+![Implementation](https://user-images.githubusercontent.com/63406916/88020141-d0d62380-cb48-11ea-9a5c-f4e0b651368d.gif)
+ 
  
